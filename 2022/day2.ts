@@ -37,3 +37,44 @@ export function rockPaperScissorsScore(input) {
 
   return score;
 }
+
+
+// the second column says how the round needs to end: X means you need to lose, Y means you need to end the round in a draw, 
+// and Z means you need to win..
+export function rockPaperScissorsScorePart2(input) {
+  const rounds = input.split("\n");
+  let score = 0;
+  for (const round of rounds) {
+    switch (round) {
+      case "B X": // lose to paper (rock 1)
+        score += 1;
+        break;
+      case "C X": // lose to scissors (paper 2)
+        score += 2;
+        break;
+      case "A X": // lose to rock (scissors 3)
+        score += 3;
+        break;
+      case "A Y": // tie with rock (rock 1)
+        score += 4;
+        break;
+      case "B Y": // tie with paper (paper 2)
+        score += 5;
+        break;
+      case "C Y": // tie with scissors (scissors 3)
+        score += 6;
+        break;
+      case "C Z": // win over scissors (rock 1)
+        score += 7;
+        break;
+      case "A Z": // win over rock (paper 2)
+        score += 8;
+        break;
+      case "B Z": // win over paper (scissors 3)
+        score += 9;
+        break;
+    }
+  }
+
+  return score;
+}
